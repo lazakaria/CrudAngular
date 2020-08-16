@@ -1,0 +1,13 @@
+{
+
+
+  "compilerOptions": {
+    "outFile":"out.js",
+    "experimentalDecorators": true,
+    "allowJs": true
+  },
+
+
+}
+
+

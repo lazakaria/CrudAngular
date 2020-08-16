@@ -1,0 +1,22 @@
+{
+  "produits": [
+    {
+      "id": 8,
+      "nom": "Télévision",
+      "prix": "350E",
+      "quantite": "80"
+    },
+    {
+      "id": 9,
+      "nom": "Pc portable",
+      "prix": "750E",
+      "quantite": "66"
+    },
+    {
+      "id": 10,
+      "nom": "Téléphone ",
+      "prix": "420E",
+      "quantite": "95"
+    }
+  ]
+}

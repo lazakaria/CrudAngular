@@ -1,0 +1,72 @@
+ <div class="container text-center">
+      <h1 class="py-4 bg-dark text-light rounded w-50 mx-auto  "><i class="fa-product-hunt"></i>Produits</h1>
+</div>
+
+
+<form [formGroup]="crudForm" #f=ngForm>
+
+
+  <div class="form-group">
+        <label for="nomp">Nom Produit:</label>
+        <input  required minlength="3" maxlength="25" pattern="[-a-z A-Z 0-9-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ_-\s]+" [(ngModel)] = "monproduit.nom" type="text"
+    class="form-control" name="nom" id="nomp" aria-describedby="helpId" formControlName ="nomproduit" placeholder="Nom produit">
+  </div>
+
+        <div *ngIf="nomproduit.invalid && nomproduit.touched " class="alert btn-danger w-50 mx-auto ">
+           <div *ngIf="nomproduit.errors.required" class="">ce champ est obligatoire!</div>
+           <div *ngIf="nomproduit.errors.minlength">Entrez nom supérieur a 3 lettres! </div>
+           <div *ngIf="nomproduit.errors.pattern">Pas de caractéres spéciaux!</div>
+        </div>
+
+
+
+  <div class="form-group">
+    <label for="prixp">Prix:</label>
+    <input  [(ngModel)] = "monproduit.prix" type="text"
+      class="form-control" name="prix" id="prixp" aria-describedby="helpId" formControlName ="prixproduit" placeholder="Prix produit">
+  </div>
+  
+ 
+
+  <div class="form-group">
+     <label for="quantitep">Quantité:</label>
+      <input [(ngModel)] = "monproduit.quantite" type="text"
+      class="form-control" name="quantite" id="quantitep" aria-describedby="helpId" formControlName ="quantiteproduit" placeholder="Quantité produit">
+      <button [disabled]="!f.valid" *ngIf = "!condition" (click)= "addproduit()" type="" class="btn btn-primary btn-block"> ADD </button> 
+  </div>
+     
+
+      <button *ngIf = "condition"(click)= "updateproduit()"  type="" class="btn btn-warning  w-50 mx-auto  btn-block " > Mofifier </button> 
+    
+  
+</form>
+
+  <div *ngIf = "myArray.length == 0" class="alert btn-warning w-50 mx-auto">Pas de produit !! </div>
+
+<table *ngIf = "myArray.length > 0"class="table table-success">
+
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>nom</th>
+      <th>prix</th>
+      <th>quantité</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor = "let variable of myArray">
+      <td>{{variable.id}}</td>
+      <td>{{variable.nom}}</td>
+      <td>{{variable.prix}}</td>
+      <td>{{variable.quantite}}</td>
+      <td><button (click)="deleteProduits(variable.id)"  type="button" class="btn btn-danger"> DELETE</button> </td>
+      <td> <button (click)="editerproduit(variable)" type="button" class="  btn btn-warning"> MODIFIER </button></td>
+    </tr>
+  </tbody>
+ 
+</table>
+
+
